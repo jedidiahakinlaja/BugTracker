@@ -16,13 +16,11 @@ const PORT =5500;
 const HOSTNAME = "localhost";
 
 
-app.get("/", (req, res) => {
-    res.render("index")
-})
+// app.get("/", (req, res) => {
+//     res.render("index")
+// })
 
-app.get("/signup", (req, res) => {
-    res.render("signup")
-})
+
 
 mongoose.set('strictQuery',false);
 

@@ -4,3 +4,77 @@
     border-radius: 10%;
     box-shadow: 2px 5px 5px;
 }
+
+
+body {
+	margin: 20px;
+	font-family: "Ubuntu", "Trebuchet MS", sans-serif;
+	font-size: 14px;
+}
+table {
+	border-collapse: collapse;
+	margin: 1em 0;
+}
+th, td {
+	padding: 5px 10px;
+	border: 1px solid #999;
+}
+th {
+	background-color: #eee;
+	padding: 10px;
+}
+
+/* random additional styles for a more real-world situation */
+td.name {
+	font-weight: bold;
+}
+td.email {
+	color: #666;
+	text-decoration: underline;
+}
+
+/* form styles */
+input, select {
+	font: inherit;
+	margin: 0;
+	padding: 4px;
+}
+.input-text {
+	min-width: 150px;
+	background-color: #fff;
+	border: 1px solid #ccc;
+}
+select {
+	min-width: 150px;
+}
+label {
+	margin: 0 4px 0 8px;
+}
+
+
+
+/* Filtable styles */
+tr.hidden {
+	display: none;
+}
+tr:nth-child(odd) > td {
+	background-color: #ffffff;
+}
+tr:nth-child(even) > td {
+	background-color: #f9f9f7;
+}
+tr.odd > td {
+	background-color: #ffffff;
+}
+tr.even > td {
+	background-color: #f9f9f7;
+}
+
+
+
+.large-table {
+	width: 100%;
+}
+.large-table td {
+	font-size: 12px;
+}

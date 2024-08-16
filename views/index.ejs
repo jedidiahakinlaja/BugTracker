@@ -11,7 +11,6 @@
   <!-- For DataTables -->
   <script type="text/javascript" charset="utf8"
     src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
-
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -27,81 +26,26 @@
 
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-4 curve">
-						<form class="validate-form" action="/postCart" method="POST">
+					<div class=" offset-md-4 col-sm-4 curve">
+						<form class="validate-form"  id="data-form" action="" method="POST">
 							<span class="login100-form-title p-b-26">
-								Add List
+								Input Bug
 							</span>
-	
-							<div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
-								<input class="input100" type="number" name="id">
-								<span class="focus-input100" data-placeholder="Id"></span>
-							</div>
-	
 							<div class="wrap-input100 validate-input">
-								<input class="input100" type="text" name="product">
-								<span class="focus-input100" data-placeholder="product"></span>
-							</div>
-	
-							<div class="wrap-input100 validate-input">
-								<input class="input100" type="number" name="data">
-								<span class="focus-input100" data-placeholder="data"></span>
-							</div>
-	
-							<div class="wrap-input100 validate-input">
-								<input class="input100" type="number" name="price">
-								<span class="focus-input100" data-placeholder="price"></span>
-							</div>
-	
-							<div class="container-login100-form-btn">
-								<div class="wrap-login100-form-btn">
-									<div class="login100-form-bgbtn"></div>
-									<button class="login100-form-btn" type="submit">
-										Add List
-									</button>
-								</div>
-							</div>
-						</form>
-					</div>
-	
-	
-					<div class="offset-md-3 col-sm-4 curve">
-						<form class="validate-form" action="/addUser" method="POST">
-							<span class="login100-form-title p-b-26">
-								Add User
-							</span>
-	
-							<div class="wrap-input100">
 								<input class="input100" type="text" name="name">
-								<span class="focus-input100" data-placeholder="Name"></span>
+								<span class="focus-input100" data-placeholder="name"></span>
 							</div>
 	
-							<div class="wrap-input100 validate-input" data-validate="Valid email is: a@b.c">
-								<input class="input100" type="text" name="email">
-								<span class="focus-input100" data-placeholder="Email"></span>
+							<div class="wrap-input100 validate-input">
+								<input class="input100" type="text" name="details">
+								<span class="focus-input100" data-placeholder="Error Detail"></span>
 							</div>
-	
-							<div class="wrap-input100 validate-input" data-validate="Enter password">
-								<span class="btn-show-pass">
-									<i class="zmdi zmdi-eye"></i>
-								</span>
-								<input class="input100" type="password" name="password">
-								<span class="focus-input100" data-placeholder="Password"></span>
-							</div>
-	
-							<div class="validate-input">
-								<select name="role" id="role">
-									<option value="admin">Admin</option>
-									<option value="user">User</option>
-								  </select>
-							</div>
-	
-	
+
 							<div class="container-login100-form-btn">
 								<div class="wrap-login100-form-btn">
 									<div class="login100-form-bgbtn"></div>
-									<button class="login100-form-btn" type="submit">
-										Add User
+									<button class="login100-form-btn" id="data-form" type="submit">
+										Add Bug
 									</button>
 								</div>
 							</div>
@@ -117,54 +61,63 @@
 
 
 		
+<div class="container">
+	<div class="row">
+		<div class="offset-md-3 col-sm-8">
+			<h1>jQuery Filtable - basic example</h1>
+			<p>Simple table for testing.</p>
+			<div class="table-filters">
+				<label for="filter-country">Name:</label>
+				<input type="text" class="input-text" id="filter-name" data-filter-col="0,1">
+			</div>
 
+			<table id="data">
+				<thead>
+					<tr>
+						<th>Asignee</th>
+						<th>Details</th>
+						<th>Submitted Time</th>
+						<th>Deadline Time</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% data.forEach(output=> { %>
+						<% if(Date() > output.ExpireTime){ %> 
+					<tr>
+						<td style="color:red"><%= output.name %></td>
+						<td style="color:red"><%= output.details %></td>
+						<td style="color:red"><%= output.DateCurrent.slice(0,25).replace(/-/g,'/') %></td>
+						<td style="color:red"><%= output.ExpireTime.slice(0,25).replace(/-/g,'/') %></td>
+						</tr>
+						<% }
+						else{ %>  
+							<tr>
+								<td><%= output.name %></td>
+								<td style="color:green" ><%= output.details %></td>
+								<td><%= output.DateCurrent.slice(0,25).replace(/-/g,'/') %></td>
+								<td><%= output.ExpireTime.slice(0,25).replace(/-/g,'/') %></td>
+							</tr>
+						 <% } %>
+					<% }); %>
+				</tbody>
+				</table>
 
-	<div class="modal fade" id="myModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title">Modal Heading</h4>
-              <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-              <div class="container">
-                <h2>Edit Data</h2>
-                <form action="/update_user" method="PUT" id="update_user">
-
-                  <div class="form-group">
-                    <label for="name">Id:</label>
-                    <input type="number" class="form-control input" class="" id="update_id" placeholder="Enter Id" name="id"
-                      disabled>
-                  </div>
-                  <div class="form-group">
-                    <label for="text">Product:</label>
-                    <input type="text" class="form-control input" id="update_product" placeholder="Enter product" name="product">
-                  </div>
-                  <div class="form-group">
-                    <label for="phone">Data:</label>
-                    <input type="number" class="form-control input" id="update_data" placeholder="Enter data" name="data">
-                  </div>
-				  <div class="form-group">
-                    <label for="price">Price:</label>
-                    <input type="number" class="form-control input" id="update_price" placeholder="Enter price" name="price">
-                  </div>
-
-                </form>
-              </div>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-              <button type="submit" id="update_table" class="btn btn-primary">update</button>
-            </div>
-
-          </div>
-        </div>
+		</div>
 	</div>
+</div>
+
+
+
+<script>
+	$(document).ready(function(){
+	   setInterval(function(){ reload_page(); },60*120);
+	});
+   
+	function reload_page()
+	{
+	   window.location.reload(true);
+	}
+   </script>
 
 
       <!--===============================================================================================-->
@@ -183,7 +136,10 @@
       <script src="vendor/countdowntime/countdowntime.js"></script>
       <!--===============================================================================================-->
       <script type="text/javascript" src="../js/delete.js"></script>
+	  <script type="text/javascript" src="../js/action.js"></script>
       <script type="text/javascript" src="../js/update.js"></script>
+	  <script type="text/javascript" src="../js/main.js"></script>
+	  <script type="text/javascript" src="../js/filtable.js"></script>
 </body>
 
 </html>
